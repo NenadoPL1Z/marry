@@ -1,3 +1,31 @@
-.test {
-    background-color: red;
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    background-image: url("/images/maxim&valeria.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 25%;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    z-index: 1;
+}
+
+
+.name {
+    font-size: 96px;
+    line-height: 100%;
+}
+
+.small {
+    font-size: 44px;
 }
