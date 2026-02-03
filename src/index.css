@@ -2,9 +2,36 @@
 
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 
 body {
-    background-color: #FFFFF0;
+    background-color: #fffaf0;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+#root {
+    width: 100%;
+    max-width: 1024px;
+    overflow: hidden;
+    margin: 0 auto;
+
+    border: 4px double #d4af37;
+    border-radius: 15px;
+}
+
+@media (max-width: 1024px) {
+    body {
+        padding: 0;
+    }
+
+    #root {
+        border: 0;
+        border-radius: 0;
+    }
 }
 
 .sn-pro-regular {
