@@ -10,7 +10,7 @@
 
 .container {
     width: 100%;
-    height: calc(100dvh - 14px);
+    height: 100dvh;
 
     position: relative;
     overflow: hidden;
@@ -23,12 +23,6 @@
     animation-name: image;
     animation-duration: 1.5s;
     animation-fill-mode: forwards
-}
-
-@media (max-width: 1024px) {
-    .container {
-        height: 100dvh
-    }
 }
 
 @media (orientation: landscape) {
