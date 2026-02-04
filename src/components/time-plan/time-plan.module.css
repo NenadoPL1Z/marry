@@ -1,0 +1,28 @@
+.container {
+
+}
+
+.text {
+    max-width: 430px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 100px;
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.paragraph {
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 20px;
+    line-height: 32px;
+    margin-bottom: 5px;
+}

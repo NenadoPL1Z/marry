@@ -1,0 +1,99 @@
+.container {
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+
+.about {
+    max-width: 468px;
+    margin: 0 auto 30px;
+}
+
+.about > *:last-child {
+    margin-bottom: 0;
+}
+
+.date {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    text-align: center;
+    color: var(--text-main);
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.title {
+    margin-bottom: 50px;
+
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.paragraph {
+    margin-bottom: 50px;
+
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.calendar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.mouth {
+    margin-bottom: 10px;
+
+    text-align: center;
+    color: var(--text-main);
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.calendarImgContainer {
+    width: 320px;
+    height: 320px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.calendarImg {
+    width: 320px;
+    height: 300px;
+    object-fit: cover;
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.8);
+    }
+}
+
+.heartImg {
+    width: 104px;
+    height: 95px;
+    position: absolute;
+    left: 62px;
+    top: 181px;
+
+    animation-name: scale;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
