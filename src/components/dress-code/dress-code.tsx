@@ -1,6 +1,7 @@
 import styles from "./dress-code.module.css";
 import classnames from "classnames/bind";
 import { HeartIcon } from "../../ui/icons";
+import { COLORS } from "./constants.ts";
 
 const cn = classnames.bind(styles);
 
@@ -15,7 +16,19 @@ export const DressCode = () => {
           нашей свадьбы!
         </p>
       </div>
-      <div className={styles.main}></div>
+      <div className={styles.main}>
+        {COLORS.map((color) => (
+          <div
+            className={styles.colorContainer}
+            key={color}>
+            <div
+              className={styles.color}
+              style={{ backgroundColor: color }}
+            />
+            <div className={styles.colorText}>{color.toUpperCase()}</div>
+          </div>
+        ))}
+      </div>
       <div className={styles.borderContainer}>
         <div className={styles.border}>
           <div className={styles.heart}>

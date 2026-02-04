@@ -8,6 +8,7 @@
 .text {
     padding: 0 20px;
     max-width: 430px;
+    margin-bottom: 30px;
 }
 
 .title {
@@ -23,11 +24,37 @@
     color: var(--text-dark);
     font-size: 20px;
     line-height: 32px;
-    margin-bottom: 5px;
 }
 
 .main {
-    margin-bottom: 100px;
+    padding: 0 20px;
+    margin-bottom: 30px;
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+}
+
+.colorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.color {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.colorText {
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 16px;
 }
 
 .borderContainer {
