@@ -3,12 +3,13 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 100px;
 }
 
 .text {
     padding: 0 20px;
     max-width: 430px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .title {
@@ -28,7 +29,7 @@
 
 .main {
     padding: 0 20px;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
 
     width: 100%;
     display: grid;

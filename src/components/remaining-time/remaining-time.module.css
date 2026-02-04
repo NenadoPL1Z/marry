@@ -1,0 +1,41 @@
+.container {
+    padding: 30px 20px;
+    background-color: #3a3431;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 30px;
+}
+
+.paragraph {
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.remainingTime {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.item {
+    width: 70px;
+    height: 70px;
+    padding: 40px;
+    border-radius: 50%;
+    border: 1px solid white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+    text-align: center;
+    color: white;
+}

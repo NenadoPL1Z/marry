@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.text {
+    padding: 0 20px;
+    max-width: 430px;
+    margin-bottom: 30px;
+}
+
+.title {
+    margin-bottom: 50px;
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 62px;
+}
+
+.paragraph {
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.form {
+    width: 100%;
+    padding: 0 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formItem {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.label {
+    color: var(--text-dark);
+    font-size: 20px;
+    line-height: 25px;
+
+    font-family: "SN Pro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.input {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #f6f1eb;
+    border: 1px solid var(--text-dark);
+    color: var(--text-dark);
+
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-family: "SN Pro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.input::placeholder {
+    color: var(--text-main);
+    font-size: 16px;
+    font-family: "SN Pro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.button {
+    border: 0;
+    box-sizing: border-box;
+    padding: 15px 30px;
+    border-radius: 30px;
+    background-color: #3a3431;
+    color: white;
+    cursor: pointer;
+    transition: .2s all linear;
+    user-select: none;
+}
+
+.button:hover,
+.button:active{
+    background-color: #000000;
+    transform: scale(1.1);
+}
