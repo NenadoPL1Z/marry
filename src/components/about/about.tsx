@@ -7,7 +7,7 @@ export const About = () => {
         data-aos="slide-custom"
         data-aos-duration="1000"
         alt="m&v"
-        src="/public/images/maxim&valeria.jpg"
+        src="/images/maxim&valeria.jpg"
         className={styles.image}
       />
       <div className={styles.layer} />
