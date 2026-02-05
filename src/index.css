@@ -43,3 +43,12 @@ body {
     font-weight: 400;
     font-style: normal;
 }
+
+[data-aos="slide-custom"] {
+    transform: translateX(-150px); /* Смещение влево */
+    transition-property: transform; /* Анимируем только трансформацию */
+}
+
+[data-aos="slide-custom"].aos-animate {
+    transform: translateX(0);
+}
