@@ -152,29 +152,29 @@ export const Form = () => {
               <input
                 type="radio"
                 name="attendance"
-                value="yes"
-                checked={attendance === "yes"}
+                value="Да, с удовольствием!"
+                checked={attendance === "Да, с удовольствием!"}
                 onChange={(e) => {
                   setAttendance(e.target.value);
                   setErrors({ ...errors, attendance: undefined });
                 }}
                 className={styles.radioInput}
               />
-              Я приду
+              Да, с удовольствием!
             </label>
             <label className={styles.radioLabel}>
               <input
                 type="radio"
                 name="attendance"
-                value="no"
-                checked={attendance === "no"}
+                value="К сожалению, не смогу"
+                checked={attendance === "К сожалению, не смогу"}
                 onChange={(e) => {
                   setAttendance(e.target.value);
                   setErrors({ ...errors, attendance: undefined });
                 }}
                 className={styles.radioInput}
               />
-              Не смогу прийти
+              К сожалению, не смогу
             </label>
           </div>
           {errors.attendance && (
