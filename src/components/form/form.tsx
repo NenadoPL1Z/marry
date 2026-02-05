@@ -89,18 +89,12 @@ export const Form = () => {
     return (
       <div className={styles.container}>
         <div className={styles.successWrapper}>
-          {" "}
-          {/* Используем тот же wrapper для анимации */}
           <div className={cn(styles.successIcon, styles.errorIcon)}>!</div>
           <h2 className={cn(styles.title, "sn-pro-regular")}>ОШИБКА</h2>
           <p className={cn(styles.paragraph, "sn-pro-regular")}>
             К сожалению, не удалось отправить анкету. Пожалуйста, свяжитесь с
-            нами в мессенджерах:
+            нами в мессенджерах или по номеру телефона
           </p>
-          <div className={styles.errorContactLinks}>
-            <p className={styles.contactLink}>Telegram</p>
-            <p className={styles.contactLink}>WhatsApp</p>
-          </div>
           <button
             className={cn(styles.button, styles.buttonAgain)}
             onClick={() => setIsFailed(false)}>
