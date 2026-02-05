@@ -64,7 +64,16 @@ export const Form = () => {
 
     try {
       console.log("Данные к отправке:", { name, attendance, selectedDrinks });
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      await fetch("https://marry-tg.onrender.com/api/send-tg", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          attendance,
+          selectedDrinks: selectedDrinks ?? [],
+        }),
+      });
 
       localStorage.setItem("wedding_form_submitted", "true");
       setIsSubmitted(true);
