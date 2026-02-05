@@ -76,10 +76,10 @@
 
 @keyframes scale {
     from {
-        transform: scale(1);
+        transform: scale(0.8);
     }
     to {
-        transform: scale(0.8);
+        transform: scale(0.6);
     }
 }
 
@@ -87,8 +87,8 @@
     width: 104px;
     height: 95px;
     position: absolute;
-    left: 62px;
-    top: 181px;
+    left: 151px;
+    top: 158px;
 
     animation-name: scale;
     animation-duration: 1.5s;

@@ -1,6 +1,7 @@
 import styles from "./calendar.module.css";
 import classnames from "classnames/bind";
 const cn = classnames.bind(styles);
+import { Calendar as CalendarBlock } from "./ui/calendar-block.tsx";
 
 export const Calendar = () => {
   return (
@@ -23,11 +24,7 @@ export const Calendar = () => {
       <div className={styles.calendar}>
         <div className={cn(styles.mouth, "sn-pro-regular")}>МАРТ 2026</div>
         <div className={styles.calendarImgContainer}>
-          <img
-            className={styles.calendarImg}
-            alt="календарь"
-            src="/images/calendar.png.webp"
-          />
+          <CalendarBlock />
           <img
             className={styles.heartImg}
             alt="сердце"
