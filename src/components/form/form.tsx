@@ -15,7 +15,6 @@ const DRINK_OPTIONS = [
   "Безалкогольные напитки",
 ];
 
-// Тип для ошибок
 interface FormErrors {
   name?: string;
   attendance?: string;
@@ -25,9 +24,13 @@ export const Form = () => {
   const [name, setName] = useState("");
   const [attendance, setAttendance] = useState("");
   const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
-
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // НОВЫЙ ФУНКЦИОНАЛ: состояние успеха
+  const [isSubmitted, setIsSubmitted] = useState(
+    localStorage.getItem("wedding_form_submitted") === "true",
+  );
 
   const handleDrinkChange = (drink: string) => {
     setSelectedDrinks((prev) =>
@@ -37,7 +40,6 @@ export const Form = () => {
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
-
     if (!name.trim()) {
       newErrors.name = "Введите ваше ФИО";
     } else if (name.trim().length < 2) {
@@ -45,38 +47,62 @@ export const Form = () => {
     } else if (name.trim().length > MAX_NAME_LENGTH) {
       newErrors.name = "ФИО слишком длинное";
     }
-
     if (!attendance) {
       newErrors.attendance = "Пожалуйста, выберите один из вариантов";
     }
-
     setErrors(newErrors);
-    // Возвращает true, если объект с ошибками пустой
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
     if (!validate()) return;
 
     setIsSubmitting(true);
     try {
       console.log("Данные к отправке:", { name, attendance, selectedDrinks });
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      alert("Форма успешно отправлена!");
 
-      // Сброс
-      setName("");
-      setAttendance("");
-      setSelectedDrinks([]);
-      setErrors({});
+      // НОВЫЙ ФУНКЦИОНАЛ: сохранение успеха
+      localStorage.setItem("wedding_form_submitted", "true");
+      setIsSubmitted(true);
     } catch (err) {
       alert("Ошибка при отправке");
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  // НОВЫЙ ФУНКЦИОНАЛ: сброс формы
+  const handleReset = () => {
+    localStorage.removeItem("wedding_form_submitted");
+    setIsSubmitted(false);
+    setName("");
+    setAttendance("");
+    setSelectedDrinks([]);
+    setErrors({});
+  };
+
+  // НОВЫЙ ФУНКЦИОНАЛ: экран успеха
+  if (isSubmitted) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.successWrapper}>
+          <div className={styles.successIcon}>✓</div>
+          <h2 className={cn(styles.title, "sn-pro-regular")}>СПАСИБО!</h2>
+          <p className={cn(styles.paragraph, "sn-pro-regular")}>
+            Ваш ответ успешно сохранен. <br />
+            До встречи на свадьбе!
+          </p>
+          <button
+            className={cn(styles.button, styles.buttonAgain)}
+            onClick={handleReset}>
+            ОТПРАВИТЬ ЕЩЕ РАЗ
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
@@ -92,7 +118,6 @@ export const Form = () => {
         className={styles.form}
         onSubmit={handleSubmit}
         noValidate>
-        {/* Поле ФИО */}
         <div className={styles.formItem}>
           <label
             className={styles.label}
@@ -105,6 +130,7 @@ export const Form = () => {
             className={cn(styles.input, { [styles.inputError]: errors.name })}
             value={name}
             placeholder="ФИО"
+            maxLength={MAX_NAME_LENGTH} // Добавлено ограничение
             onChange={(e) => {
               setName(e.target.value);
               if (errors.name) setErrors({ ...errors, name: undefined });
@@ -115,7 +141,6 @@ export const Form = () => {
           )}
         </div>
 
-        {/* Поле Присутствие */}
         <div className={styles.formItem}>
           <label className={styles.label}>
             Планируете ли вы присутствовать?
@@ -158,7 +183,6 @@ export const Form = () => {
           )}
         </div>
 
-        {/* Напитки (необязательное поле, показываем только при согласии прийти) */}
         {attendance === "yes" && (
           <div className={styles.formItem}>
             <label className={styles.label}>

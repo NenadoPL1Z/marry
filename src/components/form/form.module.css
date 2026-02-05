@@ -174,3 +174,38 @@
     cursor: not-allowed;
 }
 
+.successWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.successIcon {
+    width: 80px;
+    height: 80px;
+    background-color: #f6f1eb;
+    color: var(--text-dark);
+    border: 1px solid var(--text-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.buttonAgain {
+    margin-top: 30px;
+    background-color: transparent;
+    border: 1px solid #3a3431;
+    color: #3a3431;
+}
+
+.buttonAgain:hover {
+    background-color: #3a3431;
+    color: #fff;
+}
+
+
