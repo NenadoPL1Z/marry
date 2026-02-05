@@ -32,6 +32,11 @@ export const TimePlan = () => {
           );
         })}
       </div>
+      <img
+        className={styles.img}
+        alt="flower"
+        src="/images/flower.webp"
+      />
     </div>
   );
 };

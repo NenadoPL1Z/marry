@@ -1,6 +1,5 @@
 .container {
     padding: 0 20px;
-    margin-bottom: 50px;
 
     display: flex;
     align-items: center;
@@ -24,6 +23,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 100px;
+
 }
 
 .item {
@@ -70,4 +70,9 @@
     color: var(--text-dark);
     font-size: 18px;
     line-height: 18px;
+}
+
+.img {
+    transform: rotate(60deg);
+    scale: 0.8;
 }
