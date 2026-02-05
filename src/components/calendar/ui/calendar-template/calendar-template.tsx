@@ -1,6 +1,6 @@
-import styles from "./Calendar.module.css"; // Импорт стилей через CSS Modules
+import styles from "./template.module.css";
 
-export const Calendar = () => {
+export const CalendarTemplate = () => {
   const daysOfWeek: string[] = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
   const daysInMonth: number = 31;
   const startOffset: number = 6; // Отступ, так как 1-е число на изображении в пятницу (индекс 4)
@@ -37,5 +37,3 @@ export const Calendar = () => {
     </div>
   );
 };
-
-export default Calendar;
