@@ -26,6 +26,7 @@ export const Form = () => {
   const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isFailed, setIsFailed] = useState(false);
 
   // НОВЫЙ ФУНКЦИОНАЛ: состояние успеха
   const [isSubmitted, setIsSubmitted] = useState(
@@ -59,15 +60,16 @@ export const Form = () => {
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setIsFailed(false);
+
     try {
       console.log("Данные к отправке:", { name, attendance, selectedDrinks });
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // НОВЫЙ ФУНКЦИОНАЛ: сохранение успеха
       localStorage.setItem("wedding_form_submitted", "true");
       setIsSubmitted(true);
     } catch (err) {
-      alert("Ошибка при отправке");
+      setIsFailed(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -82,6 +84,32 @@ export const Form = () => {
     setSelectedDrinks([]);
     setErrors({});
   };
+
+  if (isFailed) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.successWrapper}>
+          {" "}
+          {/* Используем тот же wrapper для анимации */}
+          <div className={cn(styles.successIcon, styles.errorIcon)}>!</div>
+          <h2 className={cn(styles.title, "sn-pro-regular")}>ОШИБКА</h2>
+          <p className={cn(styles.paragraph, "sn-pro-regular")}>
+            К сожалению, не удалось отправить анкету. Пожалуйста, свяжитесь с
+            нами в мессенджерах:
+          </p>
+          <div className={styles.errorContactLinks}>
+            <p className={styles.contactLink}>Telegram</p>
+            <p className={styles.contactLink}>WhatsApp</p>
+          </div>
+          <button
+            className={cn(styles.button, styles.buttonAgain)}
+            onClick={() => setIsFailed(false)}>
+            ПОПРОБОВАТЬ ЕЩЕ РАЗ
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (isSubmitted) {
     return (
