@@ -1,11 +1,82 @@
 import styles from "./form.module.css";
 import classnames from "classnames/bind";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 
 const cn = classnames.bind(styles);
+const MAX_NAME_LENGTH = 100;
+
+const DRINK_OPTIONS = [
+  "Шампанское",
+  "Вино белое",
+  "Вино красное",
+  "Коньяк",
+  "Виски",
+  "Водка",
+  "Безалкогольные напитки",
+];
+
+// Тип для ошибок
+interface FormErrors {
+  name?: string;
+  attendance?: string;
+}
 
 export const Form = () => {
   const [name, setName] = useState("");
+  const [attendance, setAttendance] = useState("");
+  const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleDrinkChange = (drink: string) => {
+    setSelectedDrinks((prev) =>
+      prev.includes(drink) ? prev.filter((d) => d !== drink) : [...prev, drink],
+    );
+  };
+
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!name.trim()) {
+      newErrors.name = "Введите ваше ФИО";
+    } else if (name.trim().length < 2) {
+      newErrors.name = "ФИО слишком короткое";
+    } else if (name.trim().length > MAX_NAME_LENGTH) {
+      newErrors.name = "ФИО слишком длинное";
+    }
+
+    if (!attendance) {
+      newErrors.attendance = "Пожалуйста, выберите один из вариантов";
+    }
+
+    setErrors(newErrors);
+    // Возвращает true, если объект с ошибками пустой
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    try {
+      console.log("Данные к отправке:", { name, attendance, selectedDrinks });
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      alert("Форма успешно отправлена!");
+
+      // Сброс
+      setName("");
+      setAttendance("");
+      setSelectedDrinks([]);
+      setErrors({});
+    } catch (err) {
+      alert("Ошибка при отправке");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -16,7 +87,12 @@ export const Form = () => {
           01.03.2026
         </p>
       </div>
-      <form className={styles.form}>
+
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit}
+        noValidate>
+        {/* Поле ФИО */}
         <div className={styles.formItem}>
           <label
             className={styles.label}
@@ -26,35 +102,91 @@ export const Form = () => {
           <input
             type="text"
             id="name-input"
-            name="user_name"
-            max={50}
-            placeholder="ФИО"
-            className={styles.input}
+            className={cn(styles.input, { [styles.inputError]: errors.name })}
             value={name}
-            required
-            onChange={(e) => setName(e.target.value)}
+            placeholder="ФИО"
+            onChange={(e) => {
+              setName(e.target.value);
+              if (errors.name) setErrors({ ...errors, name: undefined });
+            }}
           />
+          {errors.name && (
+            <span className={styles.errorText}>{errors.name}</span>
+          )}
         </div>
+
+        {/* Поле Присутствие */}
         <div className={styles.formItem}>
-          <label
-            className={styles.label}
-            htmlFor="radio">
-            Планируете ли вы присутствовать на свадьбе?
+          <label className={styles.label}>
+            Планируете ли вы присутствовать?
           </label>
-          ...
+          <div
+            className={cn(styles.radioGroup, {
+              [styles.groupError]: errors.attendance,
+            })}>
+            <label className={styles.radioLabel}>
+              <input
+                type="radio"
+                name="attendance"
+                value="yes"
+                checked={attendance === "yes"}
+                onChange={(e) => {
+                  setAttendance(e.target.value);
+                  setErrors({ ...errors, attendance: undefined });
+                }}
+                className={styles.radioInput}
+              />
+              Я приду
+            </label>
+            <label className={styles.radioLabel}>
+              <input
+                type="radio"
+                name="attendance"
+                value="no"
+                checked={attendance === "no"}
+                onChange={(e) => {
+                  setAttendance(e.target.value);
+                  setErrors({ ...errors, attendance: undefined });
+                }}
+                className={styles.radioInput}
+              />
+              Не смогу прийти
+            </label>
+          </div>
+          {errors.attendance && (
+            <span className={styles.errorText}>{errors.attendance}</span>
+          )}
         </div>
-        <div className={styles.formItem}>
-          <label
-            className={styles.label}
-            htmlFor="checkbox">
-            Что предпочитаете из напитков?
-          </label>
-          ...
-        </div>
+
+        {/* Напитки (необязательное поле, показываем только при согласии прийти) */}
+        {attendance === "yes" && (
+          <div className={styles.formItem}>
+            <label className={styles.label}>
+              Что предпочитаете из напитков?
+            </label>
+            <div className={styles.checkboxGroup}>
+              {DRINK_OPTIONS.map((drink) => (
+                <label
+                  key={drink}
+                  className={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    checked={selectedDrinks.includes(drink)}
+                    onChange={() => handleDrinkChange(drink)}
+                    className={styles.checkboxInput}
+                  />
+                  {drink}
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+
         <button
           type="submit"
-          className={styles.button}>
-          ОТПРАВИТЬ
+          className={styles.button}
+          disabled={isSubmitting}>
+          {isSubmitting ? "ОТПРАВКА..." : "ОТПРАВИТЬ"}
         </button>
       </form>
     </div>

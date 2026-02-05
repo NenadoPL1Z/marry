@@ -98,3 +98,79 @@
     background-color: #000000;
     transform: scale(1.1);
 }
+
+
+/* Группировка вариантов выбора */
+.radioGroup,
+.checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Общий стиль для оберток Radio и Checkbox */
+.radioLabel,
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    color: var(--text-dark);
+    font-size: 18px;
+    font-family: "SN Pro", sans-serif;
+    transition: opacity 0.2s ease;
+}
+
+.radioLabel:hover,
+.checkboxLabel:hover {
+    opacity: 0.8;
+}
+
+/* Кастомные стили для инпутов */
+.radioInput,
+.checkboxInput {
+    /* Увеличиваем размер для удобства нажатия на мобильных */
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+
+    /* Цвет акцента (совпадающий с кнопкой) */
+    accent-color: #3a3431;
+
+    /* Чтобы инпуты не сжимались при длинном тексте */
+    flex-shrink: 0;
+}
+
+/* Небольшой отступ снизу для секций, чтобы не слипались */
+.formItem {
+    margin-bottom: 30px; /* Увеличил для лучшей читаемости групп */
+}
+
+
+.errorText {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 4px;
+    font-family: "SN Pro", sans-serif;
+}
+
+.inputError {
+    border-color: #d93025 !important;
+    background-color: #fff8f8;
+}
+
+/* Опционально: подсветка группы радиокнопок при ошибке */
+.groupError {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(217, 48, 37, 0.2);
+    background-color: rgba(217, 48, 37, 0.05);
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+

@@ -17,7 +17,7 @@ export const Calendar = () => {
         </p>
         <p className={cn("sn-pro-regular", styles.paragraph)}>
           Приглашаем вас разделить с нами праздник, посвященный созданию нашей
-          семьи и отметить в кругу родных и близких нам людей.
+          семьи, и отметить в кругу родных и близких нам людей.
         </p>
       </div>
       <div className={styles.calendar}>
