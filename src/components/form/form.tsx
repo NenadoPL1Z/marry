@@ -83,7 +83,6 @@ export const Form = () => {
     setErrors({});
   };
 
-  // НОВЫЙ ФУНКЦИОНАЛ: экран успеха
   if (isSubmitted) {
     return (
       <div className={styles.container}>
