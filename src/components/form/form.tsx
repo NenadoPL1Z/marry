@@ -210,7 +210,7 @@ export const Form = () => {
           )}
         </div>
 
-        {attendance === "yes" && (
+        {attendance === "Да, с удовольствием!" && (
           <div className={styles.formItem}>
             <label className={styles.label}>
               Что предпочитаете из напитков?
