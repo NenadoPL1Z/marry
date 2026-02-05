@@ -69,10 +69,14 @@ export const RemainingTime = () => {
 
   return (
     <div className={styles.container}>
-      <h4 className={cn(styles.paragraph, "sn-pro-regular")}>
+      <h4
+        data-aos="fade-up"
+        className={cn(styles.paragraph, "sn-pro-regular")}>
         ДО ТОРЖЕСТВА ОСТАЛОСЬ:
       </h4>
-      <div className={styles.remainingTime}>
+      <div
+        data-aos="fade-up"
+        className={styles.remainingTime}>
         {items.map((item, i) => (
           <div
             key={i}

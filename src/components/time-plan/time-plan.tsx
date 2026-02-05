@@ -13,11 +13,17 @@ const PLAN = [
 export const TimePlan = () => {
   return (
     <div className={styles.container}>
-      <h2 className={cn(styles.title, "sn-pro-regular")}>ПЛАН МЕРОПРИЯТИЯ</h2>
+      <h2
+        data-aos="fade-up"
+        className={cn(styles.title, "sn-pro-regular")}>
+        ПЛАН МЕРОПРИЯТИЯ
+      </h2>
       <div className={styles.wrapper}>
         {PLAN.map(({ name, time }, index) => {
           return (
-            <div className={cn(styles.item, { right: index % 2 === 1 })}>
+            <div
+              data-aos={index % 2 === 1 ? "fade-left" : "fade-right"}
+              className={cn(styles.item, { right: index % 2 === 1 })}>
               <div
                 className={cn(styles.back, "sn-pro-regular", {
                   rightBack: index % 2 === 1,
@@ -32,11 +38,13 @@ export const TimePlan = () => {
           );
         })}
       </div>
-      <img
-        className={styles.img}
-        alt="flower"
-        src="/images/flower.webp"
-      />
+      <div data-aos="fade-up">
+        <img
+          className={styles.img}
+          alt="flower"
+          src="/images/flower.webp"
+        />
+      </div>
     </div>
   );
 };

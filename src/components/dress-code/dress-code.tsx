@@ -9,16 +9,25 @@ export const DressCode = () => {
   return (
     <div className={styles.container}>
       <div className={styles.text}>
-        <h2 className={cn(styles.title, "sn-pro-regular")}>DRESS CODE</h2>
-        <p className={cn(styles.paragraph, "sn-pro-regular")}>
+        <h2
+          data-aos="fade-up"
+          className={cn(styles.title, "sn-pro-regular")}>
+          DRESS CODE
+        </h2>
+        <p
+          data-aos="fade-right"
+          className={cn(styles.paragraph, "sn-pro-regular")}>
           Дорогие гости, мы с особым трепетом готовимся к этому дню! Нам будет
           очень приятно, если ваш наряд будет соответствовать цветовой гамме
           нашей свадьбы!
         </p>
       </div>
       <div className={styles.main}>
-        {COLORS.map((color) => (
+        {COLORS.map((color, index) => (
           <div
+            data-aos="fade-up"
+            data-aos-offset="300"
+            data-aos-delay={((index + 1) % 4 || 4) * 100}
             className={styles.colorContainer}
             key={color}>
             <div
@@ -29,7 +38,10 @@ export const DressCode = () => {
           </div>
         ))}
       </div>
-      <div className={styles.borderContainer}>
+      <div
+        data-aos="fade-right"
+        data-aos-offset="300"
+        className={styles.borderContainer}>
         <div className={styles.border}>
           <div className={styles.heart}>
             <HeartIcon />

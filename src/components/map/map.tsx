@@ -17,18 +17,25 @@ export const Map = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <p className={cn(styles.info, "sn-pro-regular")}>
+        <p
+          data-aos="fade-up"
+          className={cn(styles.info, "sn-pro-regular")}>
           Торжественный вечер пройдет по адресу:
         </p>
-        <p className={cn(styles.info, "sn-pro-regular")}>
+        <p
+          data-aos="fade-up"
+          className={cn(styles.info, "sn-pro-regular")}>
           г. Челябинск, Сквер им. Андреевского, Центральный район, улица
           Энгельса, 107, 2 этаж.
         </p>
-        <p className={cn(styles.info, styles.last, "sn-pro-regular")}>
+        <p
+          data-aos="fade-up"
+          className={cn(styles.info, styles.last, "sn-pro-regular")}>
           Заведение "More amore event hall", <br />
           Зал "BELLO"
         </p>
         <a
+          data-aos="fade-up"
           className={cn(styles.link, "sn-pro-regular")}
           href="https://yandex.ru/maps/56/chelyabinsk/?from=mapframe&ll=61.381064%2C55.147771&mode=routes&rtext=~55.147695%2C61.381307&rtt=auto&ruri=~&source=mapframe&utm_source=mapframe&z=18"
           rel="noreferrer"
@@ -37,6 +44,7 @@ export const Map = () => {
         </a>
       </div>
       <div
+        data-aos="fade-up"
         ref={ref}
         className={cn(styles.iframeContainer, { active: isActive })}
         style={{ position: "relative", overflow: "hidden" }}>

@@ -128,8 +128,14 @@ export const Form = () => {
   return (
     <div className={styles.container}>
       <div className={styles.text}>
-        <h2 className={cn(styles.title, "sn-pro-regular")}>АНКЕТА</h2>
-        <p className={cn(styles.paragraph, "sn-pro-regular")}>
+        <h2
+          data-aos="fade-right"
+          className={cn(styles.title, "sn-pro-regular")}>
+          АНКЕТА
+        </h2>
+        <p
+          data-aos="fade-right"
+          className={cn(styles.paragraph, "sn-pro-regular")}>
           Будем очень признательны, если Вы сообщите нам о своем решении до
           01.03.2026
         </p>
@@ -139,7 +145,9 @@ export const Form = () => {
         className={styles.form}
         onSubmit={handleSubmit}
         noValidate>
-        <div className={styles.formItem}>
+        <div
+          data-aos="fade-right"
+          className={styles.formItem}>
           <label
             className={styles.label}
             htmlFor="name-input">
@@ -162,7 +170,9 @@ export const Form = () => {
           )}
         </div>
 
-        <div className={styles.formItem}>
+        <div
+          data-aos="fade-right"
+          className={styles.formItem}>
           <label className={styles.label}>
             Планируете ли вы присутствовать?
           </label>
@@ -205,7 +215,9 @@ export const Form = () => {
         </div>
 
         {attendance === "Да, с удовольствием!" && (
-          <div className={styles.formItem}>
+          <div
+            data-aos="fade-right"
+            className={styles.formItem}>
             <label className={styles.label}>
               Что предпочитаете из напитков?
             </label>
