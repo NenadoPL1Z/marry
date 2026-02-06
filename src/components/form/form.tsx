@@ -160,7 +160,7 @@ export const Form = () => {
           <label
             className={styles.label}
             htmlFor="name-input">
-            Ваше имя и фамилия
+            Ваша фамилия, имя, отчество
           </label>
           <input
             type="text"

@@ -44,7 +44,6 @@ export const Map = () => {
         </a>
       </div>
       <div
-        data-aos="fade-up"
         ref={ref}
         className={cn(styles.iframeContainer, { active: isActive })}
         style={{ position: "relative", overflow: "hidden" }}>
