@@ -160,14 +160,14 @@ export const Form = () => {
           <label
             className={styles.label}
             htmlFor="name-input">
-            Ваша фамилия, имя, отчество
+            Ваше имя и фамилия
           </label>
           <input
             type="text"
             id="name-input"
             className={cn(styles.input, { [styles.inputError]: errors.name })}
             value={name}
-            placeholder="ФИО"
+            placeholder="ФИ"
             maxLength={MAX_NAME_LENGTH} // Добавлено ограничение
             onChange={(e) => {
               setName(e.target.value);
